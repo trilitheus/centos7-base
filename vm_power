@@ -11,6 +11,6 @@ ds=${1}
 dir=${2}
 vm=packer-${3}
 action=${4}
-esxi_host=${5}
+esxi_hostname=${5}
 
-ssh ${esxi_host} "vim-cmd vmsvc/${action} \$(vim-cmd vmsvc/getallvms | grep \"\[${ds}\] ${dir}/${vm}\" | cut -d\" \" -f1)"
+ssh ${esxi_hostname} "vim-cmd vmsvc/${action} \$(vim-cmd vmsvc/getallvms | grep \"\[${ds}\] ${dir}/${vm}\" | cut -d\" \" -f1)"

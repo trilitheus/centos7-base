@@ -6,6 +6,7 @@
     "remote_username": "{{env `ESXI_USER`}}",
     "remote_password": "{{env `ESXI_PASS`}}",
     "remote_host": "{{env `ESXI_IP`}}",
+    "remote_hostname": "{{env `ESXI_HOST`}}",
     "output_directory": "{{uuid}}",
     "vm_name": "centos7"
   },
@@ -38,7 +39,7 @@
   "provisioners": [
     {
       "type": "shell-local",
-      "command": "./vm_power {{user `remote_datastore`}} {{user `output_directory`}} {{user `vm_name`}} power.off {{user `remote_host`}}"
+      "command": "./vm_power {{user `remote_datastore`}} {{user `output_directory`}} {{user `vm_name`}} power.off {{user `remote_hostname`}}"
     },
     {
       "type": "shell-local",
@@ -46,7 +47,7 @@
     },
     {
       "type": "shell-local",
-      "command": "./vm_power {{user `remote_datastore`}} {{user `output_directory`}} {{user `vm_name`}} power.on {{user `remote_host`}}"
+      "command": "./vm_power {{user `remote_datastore`}} {{user `output_directory`}} {{user `vm_name`}} power.on {{user `remote_hostname`}}"
     },
     {
       "type": "shell-local",
