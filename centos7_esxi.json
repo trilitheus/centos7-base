@@ -12,7 +12,7 @@
   "builders": [{
     "type": "vmware-iso",
     "boot_command": [
-        "<tab> text ks=http://192.168.0.27/kickstart.cfg<enter><wait>"
+        "<tab> text ks=http://192.168.0.27:9080/kickstart.cfg<enter><wait>"
     ],
     "boot_wait": "5s",
     "guest_os_type": "centos-64",
