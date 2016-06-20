@@ -38,7 +38,7 @@
   "provisioners": [
     {
       "type": "shell-local",
-      "command": "./vm_power {{user `remote_datastore`}} {{user `output_directory`}} {{user `vm_name`}} power.off"
+      "command": "./vm_power {{user `remote_datastore`}} {{user `output_directory`}} {{user `vm_name`}} power.off {{user `remote_host`}}"
     },
     {
       "type": "shell-local",
@@ -46,7 +46,7 @@
     },
     {
       "type": "shell-local",
-      "command": "./vm_power {{user `remote_datastore`}} {{user `output_directory`}} {{user `vm_name`}} power.on"
+      "command": "./vm_power {{user `remote_datastore`}} {{user `output_directory`}} {{user `vm_name`}} power.on {{user `remote_host`}}"
     },
     {
       "type": "shell-local",

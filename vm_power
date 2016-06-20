@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -e
+
+if [[ $# -ne 5 ]]; then
+  echo "not enough args"
+  exit 1
+fi
+
+ds=${1}
+dir=${2}
+vm=packer-${3}
+action=${4}
+esxi_host=${5}
+
+ssh ${esxi_host} "vim-cmd vmsvc/${action} \$(vim-cmd vmsvc/getallvms | grep \"\[${ds}\] ${dir}/${vm}\" | cut -d\" \" -f1)"
