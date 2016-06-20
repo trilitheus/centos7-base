@@ -1,0 +1,7 @@
+version: '2'
+
+services:
+  kickstart:
+    build: kickstart
+    ports:
+      - '9080:80'
