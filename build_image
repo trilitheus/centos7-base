@@ -2,6 +2,10 @@
 
 docker-compose build
 docker-compose up -d
-packer build centos7_esxi.json
+if [[ ${1} == "-debug" ]]; then
+  packer build -debug centos7_esxi.json
+else
+  packer build centos7_esxi.json
+fi
 docker-compose stop
 docker-compose rm -f
