@@ -23,6 +23,7 @@
     "iso_checksum_type": "sha256",
     "ssh_username": "packer",
     "ssh_password": "packer",
+    "ssh_wait_timeout": "10000s",
     "shutdown_command": "echo '{{user `USER`}}' | sudo -S shutdown -P now",
     "name": "{{user `vm_name`}}",
     "remote_type": "esx5",
