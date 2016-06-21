@@ -7,7 +7,7 @@
     "remote_password": "{{env `ESXI_PASS`}}",
     "remote_host": "{{env `ESXI_IP`}}",
     "remote_hostname": "{{env `ESXI_HOST`}}",
-    "output_directory": "{{uuid}}",
+    "output_directory": "{{env `GO_PIPELINE_COUNTER`}}",
     "vm_name": "centos7"
   },
   "builders": [{
