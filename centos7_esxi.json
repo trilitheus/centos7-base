@@ -40,6 +40,6 @@
   "provisioners": [{
     "type": "chef-solo",
     "cookbook_paths": ["cookbooks"],
-    "run_list": ["recipe[alliantist_harden::default]"]
+    "run_list": ["recipe[base_hardening::default]"]
   }]
 }
