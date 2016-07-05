@@ -36,5 +36,9 @@
       "format": "ova",
       "ethernet0.networkName": "VM Network"
     }
+  }],
+  "provisioners": [{
+    "type": "chef-solo",
+    "cookbook_paths": ["cookbooks"]
   }]
 }
