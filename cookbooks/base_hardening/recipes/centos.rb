@@ -49,3 +49,9 @@ template '/etc/bashrc' do
   group 'root'
   mode '00644'
 end
+
+template '/etc/modprobe.d/CIS.conf' do
+  user 'root'
+  group 'root'
+  mode '00600'
+end
