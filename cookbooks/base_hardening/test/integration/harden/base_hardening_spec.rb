@@ -15,3 +15,48 @@ control 'cis-fs-1.1.1' do
     it { should be_mounted }
   end
 end
+
+control 'cis-fs-1.1.2' do
+  impact 1.0
+  title 'Filesystem: Set nodev option for /tmp'
+  desc "Since the /tmp filesystem is not intended to support devices, set this option to ensure that
+        users cannot attempt to create block or character special devices in /tmp."
+  tag filesystem: 'tmp'
+
+  describe file('/etc/fstab') do
+    its('content') { should match %r(.*/tmp.*nodev.*) }
+  end
+  describe mount('/tmp') do
+    its('options') { should eq 'nodev' }
+  end
+end
+
+control 'cis-fs-1.1.3' do
+  impact 1.0
+  title 'Filesystem: Set nosuid option for /tmp'
+  desc "Since the /tmp filesystem is only intended for temporary file storage, set this option to
+        ensure that users cannot create set userid files in /tmp."
+  tag filesystem: 'tmp'
+
+  describe file('/etc/fstab') do
+    its('content') { should match %r(.*/tmp.*nosuid.*) }
+  end
+  describe mount('/tmp') do
+    its('options') { should eq 'nosuid' }
+  end
+end
+
+control 'cis-fs-1.1.4' do
+  impact 1.0
+  title 'Filesystem: Set noexec option for /tmp'
+  desc "Since the /tmp filesystem is only intended for temporary file storage, set this option to
+        ensure that users cannot run executable binaries from /tmp."
+  tag filesystem: 'tmp'
+
+  describe file('/etc/fstab') do
+    its('content') { should match %r(.*/tmp.*noexec.*) }
+  end
+  describe mount('/tmp') do
+    its('options') { should eq 'noexec' }
+  end
+end
