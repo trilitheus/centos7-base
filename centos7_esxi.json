@@ -43,6 +43,6 @@
     "run_list": ["recipe[base_hardening::default]"]
   }, {
     "type": "shell-local",
-    "command": "inspec exec test/base_hardening_spec.rb -t ssh://packer:packer@$(./vm_command -u {{user `remote_username`}} -h {{user `remote_host`}} -a getip -b {{user `output_directory`}} -i ~/.ssh/id_rsa -d {{user `remote_datastore`}}) --sudo"
+    "command": "inspec exec cookbooks/base_hardening/test/base_hardening_spec.rb -t ssh://packer:packer@$(./vm_command -u {{user `remote_username`}} -h {{user `remote_host`}} -a getip -b {{user `output_directory`}} -i ~/.ssh/id_rsa -d {{user `remote_datastore`}}) --sudo"
   }]
 }
