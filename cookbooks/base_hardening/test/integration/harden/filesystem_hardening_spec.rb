@@ -175,7 +175,7 @@ control 'cis-fs-1.1.18' do
   end
   check_cramfs = command('/sbin/modprobe -n -v cramfs')
   describe check_cramfs do
-    its('stdout') { should eq 'install /bin/true' }
+    its('stdout') { should mtach %r(install /bin/true) }
   end
 end
 
@@ -203,7 +203,7 @@ control 'cis-fs-1.1.23' do
   end
   check_squashfs = command('/sbin/modprobe -n -v squashfs')
   describe check_squashfs do
-    its('stdout') { should eq 'install /bin/true' }
+    its('stdout') { should eq %r(install /bin/true) }
   end
 end
 
@@ -219,6 +219,6 @@ control 'cis-fs-1.1.24' do
   end
   check_udf = command('/sbin/modprobe -n -v udf')
   describe check_udf do
-    its('stdout') { should eq 'install /bin/true' }
+    its('stdout') { should match %r(install /bin/true) }
   end
 end
