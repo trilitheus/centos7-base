@@ -157,7 +157,7 @@ control 'cis-1.1.17' do
         (such as /tmp) that are owned by another user."
   tag filesystem: 'global'
 
-  check_sticky_bit="df --local -P | awk {'if (NR!=1) print $6'} | xargs -I '{}' find '{}' -xdev -type d \( -perm -0002 -a ! -perm -1000 \)"
+  check_sticky_bit = command("df --local -P | awk {'if (NR!=1) print $6'} | xargs -I '{}' find '{}' -xdev -type d \( -perm -0002 -a ! -perm -1000 \)")
   describe check_sticky_bit do
     its('stdout') { should eq '' }
   end
@@ -173,8 +173,22 @@ control 'cis-1.1.18' do
   describe kernel_module('cramfs') do
     it { should_not be_loaded }
   end
-  check_cramfs='/sbin/modprobe -n -v cramfs'
+  check_cramfs = command('/sbin/modprobe -n -v cramfs')
   describe check_cramfs do
     its('stdout') { should eq 'install /bin/true' }
   end
 end
+
+#control 'cis-1.1.19' do
+#  title 'Disable Mounting of freevxfs Filesystems'
+
+#control 'cis-1.1.20' do
+#  title 'Disable Mounting of jffs2 Filesystems'
+
+#control 'cis-1.1.21' do
+#  title 'Disable Mounting of hfs Filesystems'
+
+#control 'cis-1.1.21' do
+#  title 'Disable Mounting of hfsplus Filesystems'
+
+
