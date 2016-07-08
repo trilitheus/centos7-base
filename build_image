@@ -1,5 +1,6 @@
 #!/bin/bash
 
+wget https://raw.githubusercontent.com/trilitheus/esxi_bash/master/vm_command
 docker-compose build
 docker-compose up -d
 if [[ ${1} == "-debug" ]]; then
