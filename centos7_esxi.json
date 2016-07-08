@@ -43,7 +43,7 @@
     "run_list": ["recipe[base_hardening::default]"]
   }, {
     "type": "shell-local",
-    "command": "until ./vm_command -u {{user `remote_username`}} -h {{user `remote_host`}} -a getip -b {{user `output_directory`}} -i ~/.ssh/id_rsa -d {{user `remote_datastore`}}; do sleep 5; done"
+    "command": "until [[ $(./vm_command -u {{user `remote_username`}} -h {{user `remote_host`}} -a getip -b {{user `output_directory`}} -i ~/.ssh/id_rsa -d {{user `remote_datastore`}}) =~ '192' ]]; do sleep 5; done"
   }, {
     "type": "shell-local",
     "command": "inspec exec cookbooks/base_hardening/test/integration/harden/*.rb -t ssh://packer:packer@$(./vm_command -u {{user `remote_username`}} -h {{user `remote_host`}} -a getip -b {{user `output_directory`}} -i ~/.ssh/id_rsa -d {{user `remote_datastore`}}) --sudo"
