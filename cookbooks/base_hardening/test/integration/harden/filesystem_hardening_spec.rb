@@ -1,6 +1,6 @@
 control 'cis-fs-1.1.1' do
   impact 1.0
-  title 'Filesystem: Use separate partition for /tmp'
+  title 'Filesystem: Create separate partition for /tmp'
   desc "Since the /tmp directory is intended to be world-writable, there is a risk of resource
         exhaustion if it is not bound to a separate partition. In addition, making /tmp its own file
         system allows an administrator to set the noexec option on the mount, making /tmp
@@ -63,7 +63,7 @@ end
 
 control 'cis-fs-1.1.5' do
   impact 1.0
-  title 'Filesystem: Use separate partition for /var'
+  title 'Filesystem: Create separate partition for /var'
   desc "Since the /var directory may contain world-writable files and directories, there is a risk of
         resource exhaustion if it is not bound to a separate partition."
   tag filesystem: '/var'
@@ -78,7 +78,7 @@ end
 
 control 'cis-fs-1.1.7' do
   impact 1.0
-  title 'Filesystem: Create Separate Partition for /var/log'
+  title 'Filesystem: Create separate partition for /var/log'
   desc "There are two important reasons to ensure that system logs are stored on a separate
         partition: protection against resource exhaustion (since logs can grow quite large) and
         protection of audit data."
@@ -91,7 +91,7 @@ end
 
 control 'cis-fs-1.1.8' do
   impact 1.0
-  title 'Filesystem: Create Separate Partition for /var/log/audit'
+  title 'Filesystem: Create separate partition for /var/log/audit'
   desc "There are two important reasons to ensure that data gathered by auditd is stored on a
         separate partition: protection against resource exhaustion (since the audit.log file can
         grow quite large) and protection of audit data. The audit daemon calculates how much free
@@ -106,7 +106,7 @@ end
 
 control 'cis-fs-1.1.9' do
   impact 1.0
-  title 'Filesystem: Create Separate Partition for /home'
+  title 'Filesystem: Create separate partition for /home'
   desc "If the system is intended to support local users, create a separate partition for the /home
         directory to protect against resource exhaustion and restrict the type of files that can be
         stored under /home."
