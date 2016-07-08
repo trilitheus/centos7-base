@@ -10,7 +10,7 @@ control 'cis-additional-1.6.1' do
     its('content') { should match /\*\s+hard\s+core\s+0/ }
   end
   describe file('/etc/sysctl.conf') do
-    its('conrtent') { should match /fs.suid_dunpable\s=\s0/ }
+    its('content') { should match /fs.suid_dumpable\s+=\s+0/ }
   end
 end
 
@@ -21,6 +21,6 @@ control 'cis-additional-1.6.2' do
         exploits as the memory placement will be consistently shifting"
 
   describe file('/etc/sysctl.conf') do
-    its('content') { should match /kernel.randomize_va_space\s=\s2/ }
+    its('content') { should match /kernel.randomize_va_space\s+=\s+2/ }
   end
 end
