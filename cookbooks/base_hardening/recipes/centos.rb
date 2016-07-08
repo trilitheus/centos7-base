@@ -55,3 +55,15 @@ template '/etc/modprobe.d/CIS.conf' do
   group 'root'
   mode '00600'
 end
+
+template '/etc/sysctl.conf' do
+  user 'root'
+  group 'root'
+  mode '00644'
+end
+
+template '/etc/security/limits.conf' do
+  user 'root'
+  group 'root'
+  mode '00644'
+end

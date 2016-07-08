@@ -7,7 +7,7 @@ control 'cis-additional-1.6.1' do
         dumping core."
 
   describe file('/etc/security/limits.conf') do
-    its('content') { should match /\*\shard\score\s0/ }
+    its('content') { should match /\*\s+hard\s+core\s+0/ }
   end
   describe file('/etc/sysctl.conf') do
     its('conrtent') { should match /fs.suid_dunpable\s=\s0/ }
