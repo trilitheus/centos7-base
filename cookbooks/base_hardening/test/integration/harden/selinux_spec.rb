@@ -33,7 +33,7 @@ control 'cis-selinux-1.4.3' do
         intended to ensure that at least the default recommendations are met."
 
   describe file('/etc/selinux/config') do
-    its('content') { should match /SELINUXtype=targeted/ }
+    its('content') { should match /SELINUXTYPE=targeted/ }
   end
 
   get_selinux= command('/sbin/sestatus')
