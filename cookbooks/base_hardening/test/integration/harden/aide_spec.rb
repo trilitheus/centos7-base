@@ -10,7 +10,7 @@ control 'cis-aide-1.3.1' do
   end
 end
 
-control 'cis-aide-1.2.2' do
+control 'cis-aide-1.3.2' do
   impact 1.0
   title 'Implement Periodic Execution of File Integrity'
   desc "Periodic file checking allows the system administrator to determine on a regular basis if
