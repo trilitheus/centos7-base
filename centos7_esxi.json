@@ -33,7 +33,7 @@
     "remote_datastore": "{{user `remote_datastore`}}",
     "output_directory": "{{user `output_directory`}}",
     "vmx_data": {
-      "format": "ova",
+      "format": "vmx",
       "ethernet0.networkName": "VM Network"
     }
   }],
