@@ -48,7 +48,7 @@
     ],
     "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
     "scripts": [
-        "scripts/vagrant.sh"
+        "centos7_base/scripts/vagrant.sh"
     ]
   }]
 }
