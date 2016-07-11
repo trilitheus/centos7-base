@@ -1,0 +1,30 @@
+{
+  "variables": {
+    "HOME": "{{env `HOME`}}",
+    "USER": "{{env `USER`}}",
+    "vm_name": "centos7"
+  },
+  "builders": [{
+    "type": "vmware-iso",
+    "boot_command": [
+        "<tab> text ks=http://192.168.0.27:9080/kickstart.cfg<enter><wait>"
+    ],
+    "type": "virtualbox-iso",
+    "boot_wait": "5s",
+    "guest_os_type": "RedHat_64",
+    "disk_size": 61440,
+    "iso_url": "http://repo.bigstepcloud.com/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1511.iso",
+    "iso_checksum": "f90e4d28fa377669b2db16cbcb451fcb9a89d2460e3645993e30e137ac37d284",
+    "iso_checksum_type": "sha256",
+    "ssh_username": "vagrant",
+    "ssh_password": "vagrant",
+    "ssh_wait_timeout": "10000s",
+    "shutdown_command": "echo '{{user `USER`}}' | sudo -S shutdown -P now",
+    "name": "{{user `vm_name`}}"
+  }],
+  "provisioners": [{
+    "type": "chef-solo",
+    "cookbook_paths": ["cookbooks"],
+    "run_list": ["recipe[base_hardening::default]"]
+  }]
+}
