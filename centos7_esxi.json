@@ -41,5 +41,14 @@
     "type": "chef-solo",
     "cookbook_paths": ["cookbooks"],
     "run_list": ["recipe[base_hardening::default]"]
+  }, {
+    "type": "shell",
+    "environment_vars": [
+      "HOME_DIR=/home/vagrant"
+    ],
+    "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
+    "scripts": [
+        "scripts/vagrant.sh"
+    ]
   }]
 }

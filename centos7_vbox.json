@@ -2,6 +2,7 @@
   "variables": {
     "HOME": "{{env `HOME`}}",
     "USER": "{{env `USER`}}",
+    "build_timestamp": "{{isotime \"20060102150405\"}}",
     "vm_name": "centos7"
   },
   "builders": [{
@@ -19,7 +20,7 @@
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "ssh_wait_timeout": "10000s",
-    "output_directory": "~/packer_vbox_builds/",
+    "output_directory": "{{user `HOME`}}/packer_vbox_builds/{{user `build_timestamp`}}",
     "shutdown_command": "echo '{{user `USER`}}' | sudo -S shutdown -P now",
     "name": "{{user `vm_name`}}"
   }],
@@ -27,5 +28,14 @@
     "type": "chef-solo",
     "cookbook_paths": ["cookbooks"],
     "run_list": ["recipe[base_hardening::default]"]
+  }, {
+    "type": "shell",
+    "environment_vars": [
+      "HOME_DIR=/home/vagrant"
+    ],
+    "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
+    "scripts": [
+        "scripts/vagrant.sh"
+    ]
   }]
 }
