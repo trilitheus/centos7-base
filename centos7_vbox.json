@@ -19,6 +19,7 @@
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "ssh_wait_timeout": "10000s",
+    "output_directory": "~/packer_vbox_builds/",
     "shutdown_command": "echo '{{user `USER`}}' | sudo -S shutdown -P now",
     "name": "{{user `vm_name`}}"
   }],
