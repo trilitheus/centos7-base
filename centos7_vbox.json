@@ -37,5 +37,8 @@
     "scripts": [
         "scripts/vagrant.sh"
     ]
+  }],
+  "post-processors": [{
+    "type": "vagrant"
   }]
 }
