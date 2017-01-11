@@ -1,0 +1,43 @@
+{
+  "variables": {
+    "HOME": "{{env `HOME`}}",
+    "USER": "{{env `USER`}}",
+    "output_directory": "{{env `GO_PIPELINE_COUNTER`}}",
+    "vm_name": "centos7-base"
+  },
+  "builders": [{
+    "type": "qemu",
+    "boot_command": [
+        "<tab> text ks=https://raw.githubusercontent.com/trilitheus/centos7-base/master/kickstart/kickstart_qemu.cfg<enter><wait>"
+    ],
+    "boot_wait": "5s",
+    "disk_size": 61440,
+    "iso_url": "http://repo.bigstepcloud.com/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1611.iso",
+    "iso_checksum": "27bd866242ee058b7a5754e83d8ee8403e216b93d130d800852a96f41c34d86a",
+    "iso_checksum_type": "sha256",
+    "ssh_username": "vagrant",
+    "ssh_password": "vagrant",
+    "ssh_wait_timeout": "10000s",
+    "shutdown_command": "echo '{{user `USER`}}' | sudo -S shutdown -P now",
+    "name": "{{user `vm_name`}}",
+    "accelerator": "kvm",
+    "qemuargs": [ [ "-m", "1024M" ] ],
+    "headless": true,
+    "disk_size": "61440",
+    "format": "raw"
+  }],
+  "provisioners": [{
+    "type": "chef-solo",
+    "cookbook_paths": ["cookbooks"],
+    "run_list": ["recipe[base_hardening::default]"]
+  }, {
+    "type": "shell",
+    "environment_vars": [
+      "HOME_DIR=/home/vagrant"
+    ],
+    "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
+    "scripts": [
+        "scripts/vagrant.sh"
+    ]
+  }]
+}
