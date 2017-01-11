@@ -3,3 +3,4 @@ output
 */**/.kitchen/*
 *cookbooks/*
 *output-*
+*.swp
