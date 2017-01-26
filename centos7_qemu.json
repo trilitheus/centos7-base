@@ -2,7 +2,6 @@
   "variables": {
     "HOME": "{{env `HOME`}}",
     "USER": "{{env `USER`}}",
-    "output_directory": "{{env `GO_PIPELINE_COUNTER`}}",
     "vm_name": "centos7-base"
   },
   "builders": [{
@@ -21,6 +20,7 @@
     "shutdown_command": "echo '{{user `USER`}}' | sudo -S shutdown -P now",
     "name": "{{user `vm_name`}}",
     "accelerator": "kvm",
+    "output_directory": "{{timestamp}}",
     "qemuargs": [ [ "-m", "1024M" ] ],
     "headless": true,
     "format": "qcow2"
@@ -39,7 +39,8 @@
         "scripts/vagrant.sh",
         "scripts/openstack.sh",
         "scripts/cleanup.sh",
-        "scripts/zerodisk.sh"
+        "scripts/zerodisk.sh",
+        "scripts/update-network.sh"
     ]
   }]
 }
