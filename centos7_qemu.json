@@ -6,13 +6,14 @@
   },
   "builders": [{
     "type": "qemu",
+    "http_directory": "kickstart",
     "boot_command": [
-        "<tab> text ks=https://raw.githubusercontent.com/trilitheus/centos7-base/master/kickstart/kickstart_qemu.cfg<enter><wait>"
+        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/kickstart_qemu.cfg<enter><wait>"
     ],
     "boot_wait": "5s",
     "disk_size": "61440",
-    "iso_url": "http://repo.bigstepcloud.com/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1611.iso",
-    "iso_checksum": "27bd866242ee058b7a5754e83d8ee8403e216b93d130d800852a96f41c34d86a",
+    "iso_url": "http://repo.bigstepcloud.com/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1708.iso",
+    "iso_checksum": "bba314624956961a2ea31dd460cd860a77911c1e0a56e4820a12b9c5dad363f5",
     "iso_checksum_type": "sha256",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
@@ -27,6 +28,7 @@
   }],
   "provisioners": [{
     "type": "chef-solo",
+    "version": "12.21.12",
     "cookbook_paths": ["cookbooks"],
     "run_list": ["recipe[base_hardening::default]"]
   }, {
