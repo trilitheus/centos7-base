@@ -14,7 +14,6 @@
     "boot_wait": "5s",
     "guest_os_type": "RedHat_64",
     "disk_size": 61440,
-    "format": "ova",
     "iso_url": "http://repo.bigstepcloud.com/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1708.iso",
     "iso_checksum": "bba314624956961a2ea31dd460cd860a77911c1e0a56e4820a12b9c5dad363f5",
     "iso_checksum_type": "sha256",
@@ -39,5 +38,8 @@
         "scripts/vagrant.sh",
         "scripts/install_vbox_guest_additions.sh"
     ]
+  }],
+  "post-processors": [{
+    "type": "vagrant"
   }]
 }
